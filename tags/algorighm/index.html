@@ -92,91 +92,16 @@
 <li>there are several candidate solution, from 5 minutes to 30 minutes</li>
 <li>it is a good example to demonstrate that more thoughts less code, of course at the cost of more time.</li>
 </ol>
-<h2 id="definition">definition</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="function"><span class="title">f</span><span class="params">(<span class="number">1</span>)</span> = 1
-<span class="title">f</span><span class="params">(<span class="number">2</span>)</span> = 1
-<span class="title">f</span><span class="params">(n)</span> = <span class="title">f</span><span class="params">(n-<span class="number">2</span>)</span> + <span class="title">f</span><span class="params">(n-<span class="number">1</span>)</span></span>
-</pre></td></tr></table></figure>
-
-<h2 id="5_minutes_solution">5 minutes solution</h2>
-<p>This is the straight forward mapping of the description what Fibnacci is, in the Math notation.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre><span class="keyword">var</span> fib = <span class="function"><span class="keyword">function</span><span class="params">(n)</span> {</span>
-    <span class="keyword">if</span>( n == <span class="number">1</span> ) <span class="keyword">return</span> <span class="number">1</span>;
-    <span class="keyword">if</span>( n == <span class="number">2</span> ) <span class="keyword">return</span> <span class="number">1</span>;
-    <span class="keyword">return</span> fib(n-<span class="number">2</span>) + fib(n-<span class="number">1</span>);
-}
-</pre></td></tr></table></figure>
-
-<p>Simple! Easy! Is this all you can do? Is there any limitation of this impl? Yes, try to calculate the fib(40)? Yep, hanging…</p>
-<p>It takes 53 seconds on my computer (MacBook Pro, I7, 8G) to get the answer: 102334155.</p>
-<h2 id="10_minutes_more">10 minutes more</h2>
-<p>Why the 5-min solution is too slow, when you calculate fib(10), the fib(1) are calculated 10 times, and 9 times of fib(2), 8 times of fib(3), and etc..</p>
-<p>So, is there anything ever renewed?</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="code"><pre><span class="keyword">var</span> _cache = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>];
-<span class="keyword">var</span> fib_1 = <span class="function"><span class="keyword">function</span><span class="params">(n)</span> {</span>
-    <span class="keyword">if</span>(_cache[n] == <span class="literal">null</span>) {
-        _cache[n] = fib_1(n-<span class="number">1</span>) + fib_1(n-<span class="number">2</span>);
-    }
-    <span class="keyword">return</span> _cache[n];
-}
-</pre></td></tr></table></figure>
-
-<p>This time, it just takes me <strong>1 ms</strong> to get the fib(40). More specifically, this is a log(n) algorithm.</p>
-<p>Actually, I got such an idea from <a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742" target="_blank" rel="external">Javascript: The Good Parts</a>.</p>
-<h2 id="even_more_15_minutes">even more 15 minutes</h2>
-<p>The cache-solution looks pretty good. However, is there anything we can better further?</p>
-<p>Yes, it might be a little bit complicated, but that part of complication is used to optimize. We got a log(n) algorithm, right? </p>
-<p>Yep, consider the following questions:</p>
-<ul>
-<li>could the memory usage be optimize further?</li>
-<li>is the recursive algorithm the only one?</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-</pre></td><td class="code"><pre>var fib_2 = <span class="function"><span class="keyword">function</span><span class="params">(n)</span> {</span>
-    <span class="keyword">if</span>(n &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">1</span>;
-
-    var _first = <span class="number">1</span>, _second = <span class="number">1</span>, _tmp = <span class="number">0</span>;
-    <span class="keyword">for</span>(var <span class="built_in">i</span> = <span class="number">3</span>; <span class="built_in">i</span> &lt;=n; <span class="built_in">i</span>++) <span class="cell">{
-        _tmp = _first + _second;
-        _first = _second;
-        _second = _tmp;
-    }</span>
-    <span class="keyword">return</span> _second;
-}
-</pre></td></tr></table></figure>
-
-<p>Less memory usage, same speed!</p>
-<p>More IMPORTANT is that, Fibnacci sequence dont <strong>HAVE TO</strong> be a recursive algorithm.</p>
-
+<p>
+        
+          <p class="article-more-link">
+            <a href="/2014/06/24/fibonacci/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://john-liu.github.io/2014/06/24/fibonacci/" data-id="83c3tgnwmx4vepep" class="article-share-link">Share</a>
+      <a data-url="http://john-liu.github.io/2014/06/24/fibonacci/" data-id="5r1pqirtecvbygvs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fibnacci/">Fibnacci</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorighm/">algorighm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li></ul>
